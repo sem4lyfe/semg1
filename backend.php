@@ -3,7 +3,7 @@ session_start();
 error_reporting(1);
 if($_SESSION['admin']=="")
 {
-	header('location:admin.php');
+	header('location:../index.php');
 }
 else
 {
@@ -14,7 +14,7 @@ if(isset($_POST['logout']))
 	header('location:adminlogout.php');
 }
 
-include('config.php');
+include('../config.php');
 //header marquee
 if(isset($_POST['m1save']))
 {
@@ -64,44 +64,115 @@ if(isset($_POST['aboutsave']))
 }
 ?>
 <div align="center">
+
+    
+
 <form method="post">
-<table width="1328" height="628" border="1">
+<table width="1200" border="1">
   <tbody>
     <tr>
-      <td colspan="6" bgcolor="#5D5CEC"><center><font size="+2"><strong style="color: #FFFFFF">Administrator Control Panel</strong></font></center><div align="right"><input type="submit" value="Logout" name="logout"></div></td>
+      <td colspan="3" bgcolor="#85C1E9"><center><font size="+2"><strong style="color: #FFFFFF">Administrator Control Panel</strong></font></center><div align="right"><input type="button" value="Approve" onclick="document.location.href='approveStd.php'">&nbsp;<input type="button" value="Report" onclick="document.location.href='report.php'">&nbsp;<input type="submit" value="Logout" name="logout"></div></td>
     </tr>
+
     <tr>
-      <td width="323" height="543">
-      <center><p><b>[ Content of Header Marquee ]</b>
-      <textarea placeholder="Input Marquee for the header of the Page!" name="marquee1"></textarea><br>
-      <input type="submit" value="Save" name="m1save"><br><?php echo $confirm; ?>
-      </p></center><br>
-      <p><center><b>Change College Name : </b><br>
-      <input type="text" placeholder="College Name" name="colgname" size="50"><input type="submit" value="Save" name="cnsave"><br><?php echo $confirm2; ?></center></p><br>
-      <center><p><b>Change College Intoduction</b><br>
-      <textarea placeholder="Input Introduction for College" name="colgintro"></textarea><br>
-      <input type="submit" value="Save" name="intsave"><br><?php echo $confirm3; ?></p></center><br>
-      <center><p><b>Change Footer</b><br>
-      <input type="text" placeholder="copyright information etc," name="footerinfo" size="50"><br>
-      <input type="submit" value="Save" name="footersave"><br><?php echo $confirm4; ?></p></center>
+      <td colspan="3" bgcolor="#AED6F1"><h3 style="color: #FFFFFF">Edit "Home" Page</h3>
       </td>
-      <td width="475">
-      <p><center><b>Edit "About" Page</b><br><br>
-      Page Heading : <input type="text" placeholder="heading" name="abouthead" size="30"><br><br>
-     [ Page Content ]<br>
-      <textarea placeholder="Input Content" name="aboutinfo"></textarea><br>
-      <input type="submit" value="Save" name="aboutsave"><br><?php echo $confirm5; ?></p></center>
+    </tr>
+
+    <tr>
+      <td width="200">
+        <p><b>Content of Header Marquee</b></p>
+      </td>
+      <td width="500">
+        <textarea rows="4" cols="120" placeholder="Input Marquee for the header of the Page!" name="marquee1"></textarea>
+      </td>
+      <td>
+        <center><input type="submit" onclick="displayOutput()" value="Save" name="m1save">
+        <br><?php echo $confirm; ?></center>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <p><b>Change College Name </b></p>
+      </td>
+      <td>
+        <input type="text" placeholder="College Name" name="colgname" size="110">
+       </td>
+       <td>
+        <center><input type="submit" onclick="displayOutput()" value="Save" name="cnsave">
+        <br><?php echo $confirm2; ?></center></p>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <p><b>Change College Introduction</b></p>
+      </td>
+      <td>
+        <textarea rows="4" cols="120" placeholder="Input Introduction for College" name="colgintro"></textarea>
+      </td>
+      <td>
+        <center><input type="submit" value="Save" onclick="displayOutput()" name="intsave">
+        <br><?php echo $confirm3; ?></p></center>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <p><b>Change Footer</b></p>
+      </td>
+      <td>
+        <input type="text" placeholder="copyright information etc," name="footerinfo" size="110">
+      </td>
+      <td>
+        <center><input type="submit" value="Save" onclick="displayOutput()" name="footersave">
+        <br><?php echo $confirm4; ?></p></center>
+      </td>
+    </tr>
       
+    <tr>
+      <td colspan="3" bgcolor="#AED6F1"><h3 style="color: #FFFFFF">Edit "About" Page</h3>
       </td>
-      <td width="40">&nbsp;</td>
-      <td width="57">&nbsp;</td>
-      <td width="60">&nbsp;</td>
-      <td width="333">&nbsp;</td>
+    </tr>
+
+    <tr>  
+      <td>
+        <p><b>Page Heading</b></p>
+      </td>
+      <td>
+        <input type="text" placeholder="heading" name="abouthead" size="110">
+      </td>
+      <td rowspan="2">
+        <center><input type="submit" value="Save" name="aboutsave" onclick="displayOutput()">
+        <br><?php echo $confirm5; ?></p></center>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <p><b>Page Content</b></p>
+      </td>
+      <td>
+        <textarea rows="4" cols="120" placeholder="Input Content" name="aboutinfo"></textarea>
+      </td>
     </tr>
   </tbody>
 </table>
 </form>
 </div>
+
 <?php
 }
 ?>
+
+<div align="center">
+  <iframe id="myFrame" src="../index.php" width="1200" height="1000"></iframe>
+
+  <script>
+    function displayOutput() {
+    document.getElementById("myFrame").src = "../index.php";
+    }
+  </script>
+</div>
+
