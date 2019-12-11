@@ -5,7 +5,7 @@ require('../config.php');
 
 if($_SESSION['user']=="")
 {
-	header('location:../index.php');
+  header('location:../index.php');
 }
 $username=$_SESSION['user'];
 $sql="select * from users where username=$username";
@@ -32,120 +32,151 @@ $footerdisp = mysqli_fetch_array($q41);
 
 ?>
 <html>
-<head>
-<title>Sample School Project</title>
-<link rel="stylesheet" type="text/css" href="../engine/css/slideshow.css" media="screen" />
-	<style type="text/css">.slideshow a#vlb{display:none}</style>
-	<script type="text/javascript" src="../engine/js/mootools.js"></script>
-	<script type="text/javascript" src="../engine/js/visualslideshow.js"></script>
-    <link rel="stylesheet" type="text/css" href="../engine1/style.css" />
-	<script type="text/javascript" src="../engine1/jquery.js"></script>
-    
-    <style type="text/css" media="screen">
-#horizontalmenu ul 
-{
-padding:1; margin:1; list-style:none;
-}
-#horizontalmenu li
-{
-float:left;
- position:relative;
- padding-right:89;
- display:block;
-border:0px solid #CC55FF; 
-border-style:inset;
-margin-left:20px;
-}
-#horizontalmenu li ul
- {
-display:none;
-position:absolute;
-}
-#horizontalmenu li:hover ul{
-    display:block;
-    background:#C4C4C4;
-height:auto; width:8em; 
-}
-#horizontalmenu li ul li
-{
-    clear:both;
-border-style:none;}
-</style>	
-</head>
-<table width="1050px" align="center"  border="1">
-  <tbody>
-    <tr>
-      <th height="39" colspan="2" style="background-color:#4E4E4E"><div style="text-align:left;color:#FFFFFF"><b><font size="+3"><a href="index.php" style="text-decoration:none ; color:#FFFFFF"><?=$colgdisp['colgname']?></a></font></b><marquee direction="left" height="100%">
-			<?=$disp['marquee']?></marquee></div></th>
-    </tr>
-    <tr>
-      <th height="317" colspan="2">
-      <!--Slider-->
-      <div id="wowslider-container1">
-	<div class="ws_images"><ul>
-<li><img src="../data1/images/banner_01.jpg" alt="Multispeciality College Campus" title="Multispeciality College Campus" id="wows1_0"/></li>
-<li><img src="../data1/images/highlightnews.jpg" alt="International Accredition" title="International Accredition" id="wows1_1"/></li>
-<li><img src="../data1/images/img21644.jpg" alt="Best Overall Employement" title="Best Overall Employement" id="wows1_2"/></li>
-<li><img src="../data1/images/url.jpg" alt="Best Of Class Infrastructure" title="Best Of Class Infrastructure" id="wows1_3"/></li>
-</ul></div>
-<div class="ws_bullets"><div>
-<a href="#" title="Multispeciality College Campus"><img src="../data1/tooltips/banner_01.jpg" alt="Multispeciality College Campus"/>1</a>
-<a href="#" title="International Accredition"><img src="../data1/tooltips/highlightnews.jpg" alt="International Accredition"/>2</a>
-<a href="#" title="Best Overall Employement"><img src="../data1/tooltips/img21644.jpg" alt="Best Overall Employement"/>3</a>
-<a href="#" title="Best Of Class Infrastructure"><img src="../data1/tooltips/url.jpg" alt="Best Of Class Infrastructure"/>4</a>
-</div></div>
-<span class="wsl"></span>
-	<a href="#" class="ws_frame"></a>
-	</div>
-	<script type="text/javascript" src="../engine1/wowslider.js"></script>
-	<script type="text/javascript" src="../engine1/script.js"></script>
-    <!--slider end-->
-    
-      </th>
-    </tr>
-    <tr>
-      <td height="38" colspan="2" style="background-color:#6E68FF">
-      	<div><a href="index.php?option=viewstatus" style="text-decoration:none ; color:#010101" id="horizontalmenu li"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HOME</b></a>
-            <a href="index.php?option=hostel" style="text-decoration:none ; color:#010101"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HOSTEL APPLICATION</b></a>
-                <a href="index.php?option=viewprofile" style="text-decoration:none ; color:#010101"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIEW PROFILE</b></a>
-  <a href="../logout.php" style="text-decoration:none ; color:#010101"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LOGOUT</b></a></td>
-    </tr>
-    <tr>
-      <td width="974" height="647" bgcolor="#D9D9D9" style="vertical-align:text-top">
-      	<?php
-	@$opt = $_GET['option'];
-	if($opt=="")
-	{
-	?>
-    <html>
-	<h1><center>Welcome <?php echo $_SESSION['user']; ?></center></h1>
-    </html>
-	<?php
-    error_reporting(1);
-	}
-	else{
-	switch($opt)
-	{
-		case 'viewstatus':
-		include('viewstatus.php');
-		break;
-		case 'viewprofile':
-		include('viewprofile.php');
-		break;
-                case 'hostel':
-                include('applyhostel.php');
-                break;
-            case 'updateprofile':
-                include('updateprofile.php');
-                break;
-		
-	}}
+  <head>
+    <title>ABC Group</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+  </head>
+  <body class="is-preload">
 
-	?>
-      </td>
-    </tr>
-    <tr>
-      <td height="25" colspan="2" style="background-color:#B8AFFF"><center><b>&copy; <?=$footerdisp['footerinfo']?></b></center></td>
-    </tr>
-  </tbody>
-</table>
+    <!-- Wrapper -->
+      <div id="wrapper">
+
+        <!-- Main -->
+          <div id="main">
+            <div class="inner">
+
+              <!-- Header -->
+                <header id="header">
+                  <a href="index.php" class="logo"><strong>ABC Hostel</strong></a>
+                  <ul class="icons">
+                    <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                    <li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+                    <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                    <li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
+                  </ul>
+                </header>
+
+              <!-- Banner -->
+                <section id="banner">
+                  <div class="content">
+                    <header>
+                      <center><h1>ABC Group of institution</h1><br></center> 
+                    </header>   
+                  </div>
+                  <span class="image object">
+                    <div class="w3-content">
+                      <img class="mySlides" src="../images/1.jpg" style="width:100%">
+                      <img class="mySlides" src="../images/2.jpg" style="width:100%">
+                      <img class="mySlides" src="../images/3.jpg" style="width:100%">
+                      <img class="mySlides" src="../images/4.jpg" style="width:100%">
+                    </div>
+                    <script>
+                    var slideIndex = 0;
+                    carousel();
+
+                    function carousel() {
+                      var i;
+                      var x = document.getElementsByClassName("mySlides");
+                      for (i = 0; i < x.length; i++) {
+                        x[i].style.display = "none"; 
+                      }
+                      slideIndex++;
+                      if (slideIndex > x.length) {slideIndex = 1} 
+                      x[slideIndex-1].style.display = "block"; 
+                      setTimeout(carousel, 2000); 
+                    }
+                    </script>
+                  </span>
+                </section>
+              <!-- Section -->
+                <section>
+                  <header class="major">
+                    <h2>ABC Institution Hostel</h2>
+                  </header>
+                        <td width="974" height="647" bgcolor="#D9D9D9" style="vertical-align:text-top">
+    <?php
+  @$opt = $_GET['option'];
+  if($opt=="")
+  {
+  ?>
+    <html>
+  <h1><center>Welcome <?php echo $_SESSION['user']; ?></center></h1>
+    </html>
+                
+<?php
+    error_reporting(1);
+  }
+  else{
+  switch($opt)
+  {
+    case 'viewstatus':
+    include('viewstatus.php');
+    break;
+    case 'viewprofile':
+    include('viewprofile.php');
+    break;
+    case 'hostel':
+    include('applyhostel.php');
+    break;
+    case 'updateprofile':
+    include('updateprofile.php');
+    break;
+    
+  }}
+  ?>
+  </td></section>
+  </div>
+  </div>
+
+        <!-- Sidebar -->
+          <div id="sidebar">
+            <div class="inner">
+
+              <!-- Menu -->
+                <nav id="menu">
+                  <header class="major">
+                    <h2>Menu</h2>
+                  </header>
+                  <ul>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="index.php?option=hostel">Hostel Application</a></li>
+                    <li><a href="index.php?option=viewstatus">View Hostel Status</a></li>
+                    <li><a href="index.php?option=viewprofile">View Profile</a></li>
+                    
+                    <li><a href="../logout.php">Log Out</a></li>
+                  </ul>
+                </nav>
+              <!-- Section -->
+                <section>
+                  <header class="major">
+                    <h2>Contact</h2>
+                  </header>
+                  <ul class="contact">
+                    <li class="icon solid fa-envelope"><a href="#"> phptpoint@gmail.com</a></li>
+                    <li class="icon solid fa-phone">(000) 000-0000</li>
+                    <li class="icon solid fa-home"> ABC Engineering College, XYZ Group, Near AIIMS, New Delhi</li>
+                  </ul>
+                </section>
+
+              <!-- Footer -->
+                <footer id="footer">
+                  <p class="copyright">&copy; <?=$footerdisp['footerinfo']?></p>
+                </footer>
+
+            </div>
+          </div>
+
+      </div>
+
+    <!-- Scripts -->
+      <script src="../assets/js/jquery.min.js"></script>
+      <script src="../assets/js/browser.min.js"></script>
+      <script src="../assets/js/breakpoints.min.js"></script>
+      <script src="../assets/js/util.js"></script>
+      <script src="../assets/js/main.js"></script>
+
+  </body>
+</html>
