@@ -108,7 +108,7 @@
 <tr><td colspan="3" style="text-align:right">Number of REJECTED application : <?=$kira?></td>
 </table>
 <br></br>
-<h2>Rejected Student</h2>
+<h2>Cancelled Student</h2>
 <table>
   <tr>
     <th>ID</th>
@@ -136,7 +136,7 @@
 <?php
 }
 ?>
-<tr><td colspan="3" style="text-align:right">Number of REJECTED application : <?=$kira?></td>
+<tr><td colspan="3" style="text-align:right">Number of CANCELLED application : <?=$kira?></td>
 </table>
 </center>
 </body>
