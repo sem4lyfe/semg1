@@ -1,5 +1,5 @@
 ---
 deployment:
  tasks:
- - export DEPLOYPATH=/home/azizifah/public_html/sem/
+ - export DEPLOYPATH=/home/azizifah/public_html/semg1/
  - /bin/cp -R * $DEPLOYPATH
