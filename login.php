@@ -34,13 +34,13 @@ else
 <fieldset style="display: inline-flex; background-color: #D8D8D8;"><legend><font size="+2"><strong>Login Panel</strong></font></legend><p><b>UserName : </b><input type="text" name="uname" required/>*</p>
 <p><b>Password : </b><input type="password" name="upass" required/>*</p><br>
 <p><input type="submit" value="Login" name="login"/></p>
-<p>Forgot password? Reset <a href="index.php?option=forgotpassword">here</a>.</p>
+<p>Forgot password? Reset <a href="forgotpassword.php">here</a>.</p>
 </fieldset>
 </form>
 
 <form method="post">
 <div>
-	Don't have an account? Click <a href="index.php?option=regs">here</a> to register.
+	Don't have an account? Click <a href="registration.php">here</a> to register.
         <br>
         Login as Administrator? Click <a href="admin">here</a> to login.
 </div>
