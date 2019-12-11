@@ -27,7 +27,6 @@ require('../config.php');
     <th>Request Date</th>
     <th>Hostel Status</th>
     <th>Reason</th>
-    <th>Offer Letter</th>
     <th>Action</th>
     </thead>
     
@@ -37,25 +36,25 @@ require('../config.php');
       echo "<tr><td>".$user['id']."</td><td>".$user['req_id']."</td>"
               . "<td>".$user['hostelname']."</td><td>".$user['hostelblock']."</td>"
               . "<td>".$user['hostelappend']."</td><td>".$user['reqdate']."</td>"
-              . "<td>".$user['appstatus']."</td><td>".$user['reason']."</td><td>N/A</td><td><a href='cancel.php?id=".$user['req_id']."'>Cancel Application</a></td>"; 
+              . "<td>".$user['appstatus']."</td><td>".$user['reason']."</td><td><a href='cancel.php?id=".$user['req_id']."'>Cancel Application</a></td>"; 
         }
        else if($user['appstatus']=='REJECTED'){
       echo "<tr><td>".$user['id']."</td><td>".$user['req_id']."</td>"
               . "<td>".$user['hostelname']."</td><td>".$user['hostelblock']."</td>"
               . "<td>".$user['hostelappend']."</td><td>".$user['reqdate']."</td>"
-              . "<td>".$user['appstatus']."</td><td>".$user['reason']."</td><td>N/A</td><td>N/A</td>"; 
+              . "<td>".$user['appstatus']."</td><td>".$user['reason']."</td><td>N/A</td>"; 
         }
          else if($user['appstatus']=='CANCELLED'){
       echo "<tr><td>".$user['id']."</td><td>".$user['req_id']."</td>"
               . "<td>".$user['hostelname']."</td><td>".$user['hostelblock']."</td>"
               . "<td>".$user['hostelappend']."</td><td>".$user['reqdate']."</td>"
-              . "<td>".$user['appstatus']."</td><td>".$user['reason']."</td><td>N/A</td><td>N/A</td>"; 
+              . "<td>".$user['appstatus']."</td><td>".$user['reason']."</td><td>N/A</td>"; 
         }
         else{
             echo "<tr><td>".$user['id']."</td><td>".$user['req_id']."</td>"
               . "<td>".$user['hostelname']."</td><td>".$user['hostelblock']."</td>"
               . "<td>".$user['hostelappend']."</td><td>".$user['reqdate']."</td>"
-              . "<td>".$user['appstatus']."</td><td>".$user['reason']."</td><td><a href='offer_letter.php?id=".$user['req_id']."' target='_blank'>Click here for offer letter</a></td><td><a href='cancel.php?id=".$user['req_id']."' onclick='confirm(Are you sure you want to cancel?)'>Cancel Application</a></td>"; 
+              . "<td>".$user['appstatus']."</td><td>".$user['reason']."</td><td><a href='cancel.php?id=".$user['req_id']."' onclick='confirm(Are you sure you want to cancel?)'>Cancel Application</a></td>"; 
         }
     }
     ?>
