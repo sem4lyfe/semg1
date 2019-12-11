@@ -26,7 +26,6 @@
 }
 
 .button {
-    background-color: #4CAF50; /* Green */
     border-radius: 8px;
     color: white;
     padding: 5px 5px;
