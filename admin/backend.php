@@ -3,75 +3,72 @@ session_start();
 error_reporting(1);
 if($_SESSION['admin']=="")
 {
-	header('location:../index.php');
+  header('location:../index.php');
 }
 else
 {
-	
+  
 //logout
 if(isset($_POST['logout']))
 {
-	header('location:adminlogout.php');
+  header('location:adminlogout.php');
 }
 
 include('../config.php');
 //header marquee
 if(isset($_POST['m1save']))
 {
-	$marquee = $_POST['marquee1'];
-	$query = "UPDATE admin SET marquee1='$marquee' WHERE  id=1";
-	mysqli_query($con,$query);
-	$confirm ="<b style='color:red'>Page Saved</b>";
+  $marquee = $_POST['marquee1'];
+  $query = "UPDATE admin SET marquee1='$marquee' WHERE  id=1";
+  mysqli_query($con,$query);
+  $confirm ="<b style='color:red'>Page Saved</b>";
 }
 
 //colg name
 if(isset($_POST['cnsave']))
 {
-	$cname = $_POST['colgname'];
-	$query2 = "UPDATE admin SET colgname='$cname' WHERE id=1";
-	mysqli_query($con,$query2);
-	$confirm2 = "<b style='color:red'>Page Saved</b>";
+  $cname = $_POST['colgname'];
+  $query2 = "UPDATE admin SET colgname='$cname' WHERE id=1";
+  mysqli_query($con,$query2);
+  $confirm2 = "<b style='color:red'>Page Saved</b>";
 }
 
 //colg intro
 if(isset($_POST['intsave']))
 {
-	$intro = $_POST['colgintro'];
-	$query3 = "UPDATE admin SET colgintro='$intro' WHERE id=1";
-	mysqli_query($con,$query3);
-	$confirm3 = "<b style='color:red'>Page Saved</b>";
+  $intro = $_POST['colgintro'];
+  $query3 = "UPDATE admin SET colgintro='$intro' WHERE id=1";
+  mysqli_query($con,$query3);
+  $confirm3 = "<b style='color:red'>Page Saved</b>";
 }
 
 //footer info
 if(isset($_POST['footersave']))
 {
-	$footer = $_POST['footerinfo'];
-	$query4 = "UPDATE admin SET footerinfo='$footer' WHERE id=1";
-	mysqli_query($con,$query4);
-	$confirm4 = "<b style='color:red'>Page Saved</b>";
+  $footer = $_POST['footerinfo'];
+  $query4 = "UPDATE admin SET footerinfo='$footer' WHERE id=1";
+  mysqli_query($con,$query4);
+  $confirm4 = "<b style='color:red'>Page Saved</b>";
 }
 
 //about page
 if(isset($_POST['aboutsave']))
 {
-	$abouthead = $_POST['abouthead'];
-	$aboutinfo = $_POST['aboutinfo'];
-	$query5 = "UPDATE admin SET abouthead='$abouthead' WHERE id=1";
-	$query6 = "UPDATE admin SET aboutinfo='$aboutinfo' WHERE id=1";
-	mysqli_query($con,$query5);
-	mysqli_query($con,$query6);
-	$confirm5 = "<b style='color:red'>Page Saved</b>";
+  $abouthead = $_POST['abouthead'];
+  $aboutinfo = $_POST['aboutinfo'];
+  $query5 = "UPDATE admin SET abouthead='$abouthead' WHERE id=1";
+  $query6 = "UPDATE admin SET aboutinfo='$aboutinfo' WHERE id=1";
+  mysqli_query($con,$query5);
+  mysqli_query($con,$query6);
+  $confirm5 = "<b style='color:red'>Page Saved</b>";
 }
 ?>
 <div align="center">
-
-    
-
 <form method="post">
-<table width="1200" border="1">
+<table border="1">
   <tbody>
     <tr>
-      <td colspan="3" bgcolor="#85C1E9"><center><font size="+2"><strong style="color: #FFFFFF">Administrator Control Panel</strong></font></center><div align="right"><input type="button" value="Approve" onclick="document.location.href='approveStd.php'">&nbsp;<input type="button" value="Report" onclick="document.location.href='report.php'">&nbsp;<input type="submit" value="Logout" name="logout"></div></td>
+      <td colspan="3" bgcolor="#85C1E9"><center><font size="+2"><strong style="color: #FFFFFF">Administrator Control Panel</strong></font></center></td>
     </tr>
 
     <tr>
@@ -107,7 +104,7 @@ if(isset($_POST['aboutsave']))
 
     <tr>
       <td>
-        <p><b>Change College Introduction</b></p>
+        <p><b>Change College Intoduction</b></p>
       </td>
       <td>
         <textarea rows="4" cols="120" placeholder="Input Introduction for College" name="colgintro"></textarea>
@@ -167,7 +164,7 @@ if(isset($_POST['aboutsave']))
 ?>
 
 <div align="center">
-  <iframe id="myFrame" src="../index.php" width="1200" height="1000"></iframe>
+  <iframe id="myFrame" src="../index.php" width="800" height="1000"></iframe>
 
   <script>
     function displayOutput() {

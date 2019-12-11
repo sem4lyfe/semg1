@@ -9,7 +9,7 @@
 }
 
 #customers td, #customers th {
-  border: 1px solid #ddd;
+  border: 1px solid #000000;
   padding: 8px;
 }
 
@@ -21,8 +21,8 @@
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #4CAF50;
-  color: white;
+  background-color: #ddd;
+  color: black;
 }
 
 .button {
@@ -92,6 +92,10 @@
   </tr>
 
   <?php
+    session_start();
+    error_reporting(1);
+    include('config.php');
+
     $result = mysqli_query($con, "SELECT * FROM hostel WHERE appstatus='APPROVED'");
         
       while($row = mysqli_fetch_array($result)){
@@ -124,6 +128,9 @@
   </tr>
 
   <?php
+    session_start();
+    error_reporting(1);
+    include('config.php');
 
     $result = mysqli_query($con, "SELECT * FROM hostel WHERE appstatus='REJECTED'");
         
@@ -145,7 +152,6 @@
 ?>
 
 </table>
-
 <br></br>
 <h2>Cancelled Student</h2>
 <table id="customers">
