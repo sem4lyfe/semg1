@@ -1,31 +1,25 @@
 <?php
 session_start();
-
 //connectivity
-require('config.php');
-
-//marquee display
-$q = "SELECT marquee1 FROM admin WHERE id=1";
-$q1 = mysqli_query($con,$q);
-$disp = mysqli_fetch_array($q1);
-//echo $disp['marquee1'];
-
-//change colg name
-$q2 = "SELECT colgname FROM admin WHERE id=1";
-$q21 = mysqli_query($con,$q2);
-$colgdisp = mysqli_fetch_array($q21);
-
-//change intro content
-$q3 = "SELECT colgintro FROM admin WHERE id=1";
-$q31 = mysqli_query($con,$q3);
-$introdisp = mysqli_fetch_array($q31);
-//echo $introdisp['colgintro'];
-
-//change footer 
-$q4 = "SELECT footerinfo FROM admin WHERE id=1";
-$q41 = mysqli_query($con,$q4);
-$footerdisp = mysqli_fetch_array($q41);
-//echo $footerdisp['footerinfo'];
+require('../config.php');
+if(isset($_POST['admlogin']))
+{
+	$u = $_POST['admname'];
+	$pass = $_POST['admpass'];
+	$_SESSION['admin']=$u;
+	$p = md5($pass);
+	$q = "SELECT * FROM admin WHERE auser='$u' AND apass='$p'";
+	$cq = mysqli_query($con,$q);
+	$ret = mysqli_num_rows($cq);
+	if($ret == true)
+	{
+		header('location:index1.php');
+	}
+	else
+	{
+		echo "<script>alert('Wrong Login Details, Try Again!')</script>";
+	}
+}
 ?>
 
 <html>
@@ -33,7 +27,7 @@ $footerdisp = mysqli_fetch_array($q41);
 		<title>ABC Group</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
 	</head>
 	<body class="is-preload">
 
@@ -46,7 +40,7 @@ $footerdisp = mysqli_fetch_array($q41);
 
 							<!-- Header -->
 								<header id="header">
-									<a href="index.php" class="logo"><strong>ABC Hostel</strong></a>
+									<a href="../index.php" class="logo"><strong>ABC Hostel</strong></a>
 									<ul class="icons">
 										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
@@ -65,10 +59,10 @@ $footerdisp = mysqli_fetch_array($q41);
 									</div>
 									<span class="image object">
 										<div class="w3-content">
-										  <img class="mySlides" src="images/1.jpg" style="width:100%">
-										  <img class="mySlides" src="images/2.jpg" style="width:100%">
-										  <img class="mySlides" src="images/3.jpg" style="width:100%">
-										  <img class="mySlides" src="images/4.jpg" style="width:100%">
+										  <img class="mySlides" src="../images/1.jpg" style="width:100%">
+										  <img class="mySlides" src="../images/2.jpg" style="width:100%">
+										  <img class="mySlides" src="../images/3.jpg" style="width:100%">
+										  <img class="mySlides" src="../images/4.jpg" style="width:100%">
 										</div>
 										<script>
 										var slideIndex = 0;
@@ -100,12 +94,27 @@ $footerdisp = mysqli_fetch_array($q41);
 									{
 									?>
 	<center>
-	  	<h2><b><font size="+3"><?php echo $colgdisp['colgname'];?>
-	    </font></b></h2>
-		</center>
-   		<center><img src="images/colg.jpg" width="696" height="488"></center><br>
-    	<p><b>A pioneer educational Institute of Northern India, has been striving to provide quality higher education since 2000. Approved by AICTE and UGC, ABC has a sprawling multi-discipline campus, world class facilities and competent faculty, with prime focus on research and quality education. Creating a benchmark in the field of education, ABC aims to create proficient technocrats and future leaders with emphasis on overall development of personality imbibing core human values among students.</b><center>
-     	 <p>&nbsp;</p>
+<div align="center">
+<form method="post">
+<table width="1067" border="1">
+  <tbody>
+    <tr>
+      <td><center>
+        <h1><strong>ADMINISTRATOR LOGIN</strong></h1>
+      </center></td>
+    </tr>
+    <tr>
+      <th>
+      <center><fieldset style="display:inline-flex"><br>
+      <p>Username : <input type="text" name="admname" placeholder="Admin Username">
+      <p>Password : <input type="password" name="admpass" placeholder="Admin Password">
+      <p><input type="submit" value="Login" name="admlogin">&nbsp;<input type="reset" value="Reset"></p></fieldset>
+      </center></th>
+    </tr>
+  </tbody>
+</table>
+</form>
+</div>
       	<p><strong><font size="+2"><?php echo $colgdisp['colgname'];?></font></strong> <b>-</b> <font size="+1"><?php echo $introdisp['colgintro']; ?></font></p>
     </center></p>
 								
@@ -115,6 +124,9 @@ $footerdisp = mysqli_fetch_array($q41);
 	else{
 	switch($opt)
 	{
+		case 'approveStd' :
+		include('approveStd.php');
+		break;
 		case 'regs':
 		include('registration.php')	;
 		break;
@@ -154,8 +166,11 @@ $footerdisp = mysqli_fetch_array($q41);
 		case 'notice':
 		include('notice.php');
 		break;
-                case 'forgotpassword':
-		include('forgotpassword.php');
+		case 'adminlogout':
+		include('adminlogout.php');
+		break;
+		case 'report':
+		include('report.php');
 		break;
 		
 	}}
@@ -165,61 +180,15 @@ $footerdisp = mysqli_fetch_array($q41);
 	</div>
 
 				<!-- Sidebar -->
-					<div id="sidebar">
-						<div class="inner">
-
-							<!-- Menu -->
-								<nav id="menu">
-									<header class="major">
-										<h2>Menu</h2>
-									</header>
-									<ul>
-										<li><a href="index.php">Home</a></li>
-										<li><a href="index.php?option=about">About</a></li>
-										<li><a href="index.php?option=gallery">Gallery</a></li>
-										<li><a href="index.php?option=course">Courses</a></li>
-										<li>
-											<span class="opener">College Updates</span>
-											<ul>
-												<li><a href="index.php?option=notice">Notice Board</a></li>
-												<li><a href="index.php?option=news">News</a></li>
-												<li><a href="index.php?option=sports">Sports Fest</a></li>
-												<li><a href="index.php?option=sdp">Student Development Programme</a></li>
-												<li><a href="index.php?option=wevents">Weekend Events</a></li>
-											</ul>
-										</li>
-                                                                                <li><a href="index.php?option=login">Login</a></li>
-                                                                                <li><a href="index.php?option=regs">Registration</a></li>
-									</ul>
-								</nav>
-							<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Contact</h2>
-									</header>
-									<ul class="contact">
-										<li class="icon solid fa-envelope"><a href="#"> phptpoint@gmail.com</a></li>
-										<li class="icon solid fa-phone">(000) 000-0000</li>
-										<li class="icon solid fa-home"> ABC Engineering College, XYZ Group, Near AIIMS, New Delhi</li>
-									</ul>
-								</section>
-
-							<!-- Footer -->
-								<footer id="footer">
-									<p class="copyright">&copy; <?=$footerdisp['footerinfo']?></p>
-								</footer>
-
-						</div>
-					</div>
 
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
 
 	</body>
 </html>
